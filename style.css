@@ -24,6 +24,10 @@ body {
 h1 {
   font-size: 3.5rem;
 }
+h2 {
+  font-size: 2rem;
+  margin: 16px auto;
+}
 .btn:hover {
   background-color: rgb(55, 155, 255);
 }
@@ -128,6 +132,8 @@ select:focus {
   grid-template-columns: repeat(3, 1fr);
   padding: 20px;
   gap: 16px;
+  min-width: 900px;
+  /* width: clamp(900, 80%, 1000px); */
 }
 .foto-section {
   display: flex;
@@ -137,10 +143,6 @@ select:focus {
 }
 .foto-card {
   text-align: center;
-}
-h2 {
-  font-size: 1.1rem;
-  margin: 5px 0 10px;
 }
 form {
   width: clamp(200px, 70%, 400px);
@@ -160,4 +162,19 @@ input, textarea {
 input:focus, textarea:focus {
   background-color: lightgray;
   outline: none;
+}
+.mobile-warn {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .mobile-warn {
+    display: block;
+  }
+  .mobile-warn h1 {
+    font-size: 2.5rem;
+  }
+  .main {
+    display: none;
+  }
 }
