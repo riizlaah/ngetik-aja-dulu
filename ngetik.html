@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>Ngetik</title>
+  <title>Ngetik Aja Dulu | Game</title>
 </head>
 <body>
   <div class="main">
@@ -15,7 +15,8 @@
         <option value="0">Inggris</option>
         <option value="1">Indonesia</option>
       </select>
-      <a href="index.html" class="btn">Kembali</a>
+      <a href="index.html" class="btn" id="backBtn">Kembali</a>
+      <button type="button" class="btn-red" id="surrendBtn" onclick="endGame()" hidden>Menyerah</button>
     </div>
   </div>
   <div class="mobile-warn">
@@ -68,6 +69,8 @@
     secLeft = 8,
     secLeftLabel = get("#timeleft"),
     textToType = get("#txt-to-type"),
+    surrendBtn = get("#surrendBtn"),
+    backBtn = get("#backBtn"),
     wrong = false,
     gameEnded = false,
     currLang = 0,
@@ -79,6 +82,11 @@
       if(gameEnded) return e.preventDefault();
       // jika bukan abjad/nomor maka jangan eksekusi kode berikutnya
       if(e.key.length > 1) return e.preventDefault();
+      // jika tombol menyerah belum tampil, maka tampilkan tombol menyerah
+      if(surrendBtn.hidden) {
+        backBtn.hidden = true;
+        surrendBtn.removeAttribute('hidden');
+      }
       // jika waktu yg tersisa habis, maka game selesai
       if(secLeft <= 0) return endGame();
       // jika waktu mulai belum ada, maka atur waktu mulai
@@ -133,6 +141,10 @@
     function endGame() {
       // jika sudah selesai, maka jangan eksekusi lagi
       if(gameEnded) return;
+      if(!surrendBtn.hasAttribute('hidden')) {
+        surrendBtn.hidden = true;
+        backBtn.removeAttribute('hidden');
+      }
       // atur game menjadi sudah selesai, lalu hitung durasi permainan dalam menit
       const endTime = new Date();
       const minutes = (endTime - startTime) / (1000 * 60);
