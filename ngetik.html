@@ -104,14 +104,15 @@
         // tambahkan posisi huruf saat ini (+1)
         currCharPos++;
       } else {
-        // tambahkan total huruf yang salah (+1) dan buat tampilan teks yang diketik menjadi merah
+        // tambahkan total huruf yang salah (+1)
+        // dan buat tampilan teks yang diketik menjadi merah
         ErrCount++;
         wrong = true;
       }
       // jika sudah mencapai huruf terakhir, maka pilih kata baru
       if(currCharPos >= currWord.length) return choseRandomWord();
-      e.preventDefault();
       updateDisplay();
+      e.preventDefault();
     }
 
     function choseRandomWord() {
@@ -147,15 +148,18 @@
       }
       // atur game menjadi sudah selesai, lalu hitung durasi permainan dalam menit
       const endTime = new Date();
-      const minutes = (endTime - startTime) / (1000 * 60);
+      const minutes = (endTime - startTime) / 60000;
       gameEnded = true;
       startTime = null;
       // atur supaya text "waktu yg tersisa" menjadi normal (tidak berwarna merah)
       secLeftLabel.className = "";
       // hitung WPM(Word Per Minute)
+      // rumus: (Jumlah Karakter Yg Benar / 5) / Jumlah Menit
+      // note: 5 yg dimaksud adalah rata-rata jumlah karakter setiap kata-kata
       let wpm = ((correctCount / 5) / minutes).toFixed(2);
       // hitung akurasi
       const total = correctCount + ErrCount;
+      // rumus: (Jumlah Karakter Yg Benar / Total Karakter Yg Diketik) * 100
       let accuracy = total > 0 ? ((correctCount / total) * 100).toFixed(2) : 0;
       // tampilkan info WPM, akurasi dan total kata
       secLeftLabel.innerHTML = `WPM : ${wpm}<br>Akurasi : ${accuracy}%<br>Total Kata : ${totalWords}`;
