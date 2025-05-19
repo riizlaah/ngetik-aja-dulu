@@ -148,7 +148,14 @@ select:focus {
 }
 .foto-card {
   text-align: center;
+  transition: 0.3s;
+  text-decoration: none;
 }
+
+.foto-card:hover {
+  transform: scale(1.05);
+}
+
 form {
   width: clamp(200px, 70%, 400px);
   display: flex;
