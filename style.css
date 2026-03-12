@@ -23,6 +23,9 @@ button, a.btn {
 h1 {
   font-size: 3.5rem;
 }
+h1.v2 {
+  font-size: 2rem;
+}
 h2 {
   font-size: 2rem;
   margin: 16px auto;
@@ -65,11 +68,12 @@ h2 {
 }
 select {
   background-color: dodgerblue;
-  padding: 10px;
+  padding: 0.5rem;
   border: none;
   border-radius: 5px;
   font-size: 1rem;
-  min-height: 60px;
+  height: 56px;
+  /* min-height: 60px; */
 }
 select:focus {
   outline: none;
@@ -97,13 +101,17 @@ select:focus {
   border-radius: 8px;
 }
 .gold-card {
-  background-color: goldenrod;
-  box-shadow: 0 0 10px yellow;
+  background-color: transparent;
+  box-shadow: 0 0 10px gold;
   min-width: 380px;
+  transition: 0.3s;
+}
+.gold-card:hover {
+  box-shadow: 0 0 20px gold;
 }
 .blue-card {
   min-width: 230px;
-  background-color: dodgerblue;
+  box-shadow: 0 0 10px rgba(30, 143, 255, 0.75);
 }
 .info {
   font-size: 0.9rem;
@@ -116,21 +124,25 @@ select:focus {
   font-size: 0.9rem;
 }
 .divider {
-  border-top: 4px solid white;
+  border-top: 2px solid white;
   margin: 30px 0;
   flex-grow: 1;
   height: 4px;
   width: 100%;
 }
-.white-card {
+.shadow {
   border-radius: 8px;
-  padding: 10px;
-  margin: 64px 10px;
+  padding: 1.25rem;
+  margin: 1rem;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 500px;
+  transition: 0.3s;
+}
+.shadow:hover {
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 .grid-container {
   display: grid;
@@ -150,6 +162,9 @@ select:focus {
   text-align: center;
   transition: 0.3s;
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .foto-card:hover {
@@ -177,6 +192,12 @@ input:focus, textarea:focus {
 }
 .mobile-warn {
   display: none;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
 }
 
 @media screen and (max-width: 768px) {

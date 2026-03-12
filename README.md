@@ -1,4 +1,3 @@
 # Ngetik Aja Dulu
 
-
-bla bla bla
+Simple typing game with HTML/CSS/JS.
